@@ -8,8 +8,16 @@ import com.badlogic.game.Kring;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-		config.setForegroundFPS(60);
+
 		config.setTitle("Kring");
+
+		config.setForegroundFPS(60);
+		config.setIdleFPS(20);
+		config.useVsync(true);
+
+		config.setWindowedMode(800, 640);
+		config.setWindowIcon("GameLogo.png");
+
 		new Lwjgl3Application(new Kring(), config);
 	}
 }
