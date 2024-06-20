@@ -1,8 +1,9 @@
 package com.badlogic.game;
 
-import com.badlogic.game.Screens.MainMenuScreen;
+import com.badlogic.game.Graphics.Screens.Screen_MainMenu;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import helper.RelativeScreenPositionService;
 
 public class Kring extends Game {
 	public SpriteBatch batch;
@@ -11,7 +12,7 @@ public class Kring extends Game {
 	public void create() {
 		batch = new SpriteBatch();
 
-		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new Screen_MainMenu(this));
 	}
 
 	@Override
@@ -22,5 +23,11 @@ public class Kring extends Game {
 	@Override
 	public void dispose() {
 		batch.dispose();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		RelativeScreenPositionService.UpdateAbsoluteResolution(width,height);
 	}
 }
